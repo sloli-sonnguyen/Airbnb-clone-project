@@ -1,36 +1,42 @@
-import React from 'react'
-import CIcon from '@coreui/icons-react'
+import React from 'react';
+import CIcon from '@coreui/icons-react';
 
-const _nav =  [
+const _nav = [
   {
     _tag: 'CSidebarNavItem',
     name: 'Dashboard',
     to: '/dashboard',
-    icon: <CIcon name="cil-speedometer" customClasses="c-sidebar-nav-icon"/>,
+    icon: <CIcon name="cil-speedometer" customClasses="c-sidebar-nav-icon" />,
     badge: {
       color: 'info',
       text: 'NEW',
-    }
+    },
   },
   {
     _tag: 'CSidebarNavTitle',
-    _children: ['Theme']
+    _children: ['Data Table'],
   },
   {
     _tag: 'CSidebarNavItem',
-    name: 'Colors',
-    to: '/theme/colors',
-    icon: 'cil-drop',
+    name: 'Rooms',
+    to: '/datatable/rooms',
+    icon: 'cil-home',
   },
   {
     _tag: 'CSidebarNavItem',
-    name: 'Typography',
-    to: '/theme/typography',
-    icon: 'cil-pencil',
+    name: 'Customers',
+    to: '/datatable/customers',
+    icon: 'cil-user',
+  },
+  {
+    _tag: 'CSidebarNavItem',
+    name: 'Purchases',
+    to: '/datatable/purchases',
+    icon: 'cil-spreadsheet',
   },
   {
     _tag: 'CSidebarNavTitle',
-    _children: ['Components']
+    _children: ['Components'],
   },
   {
     _tag: 'CSidebarNavDropdown',
@@ -145,14 +151,14 @@ const _nav =  [
         _tag: 'CSidebarNavItem',
         name: 'Dropdowns',
         to: '/buttons/button-dropdowns',
-      }
+      },
     ],
   },
   {
     _tag: 'CSidebarNavItem',
     name: 'Charts',
     to: '/charts',
-    icon: 'cil-chart-pie'
+    icon: 'cil-chart-pie',
   },
   {
     _tag: 'CSidebarNavDropdown',
@@ -205,9 +211,9 @@ const _nav =  [
       {
         _tag: 'CSidebarNavItem',
         name: 'Toaster',
-        to: '/notifications/toaster'
-      }
-    ]
+        to: '/notifications/toaster',
+      },
+    ],
   },
   {
     _tag: 'CSidebarNavItem',
@@ -220,7 +226,7 @@ const _nav =  [
     },
   },
   {
-    _tag: 'CSidebarNavDivider'
+    _tag: 'CSidebarNavDivider',
   },
   {
     _tag: 'CSidebarNavTitle',
@@ -263,15 +269,15 @@ const _nav =  [
       text: 'NEW',
     },
     addLinkClass: 'c-disabled',
-    'disabled': true
+    disabled: true,
   },
   {
     _tag: 'CSidebarNavDivider',
-    className: 'm-2'
+    className: 'm-2',
   },
   {
     _tag: 'CSidebarNavTitle',
-    _children: ['Labels']
+    _children: ['Labels'],
   },
   {
     _tag: 'CSidebarNavItem',
@@ -279,9 +285,9 @@ const _nav =  [
     to: '',
     icon: {
       name: 'cil-star',
-      className: 'text-danger'
+      className: 'text-danger',
     },
-    label: true
+    label: true,
   },
   {
     _tag: 'CSidebarNavItem',
@@ -289,9 +295,9 @@ const _nav =  [
     to: '',
     icon: {
       name: 'cil-star',
-      className: 'text-info'
+      className: 'text-info',
     },
-    label: true
+    label: true,
   },
   {
     _tag: 'CSidebarNavItem',
@@ -299,14 +305,14 @@ const _nav =  [
     to: '',
     icon: {
       name: 'cil-star',
-      className: 'text-warning'
+      className: 'text-warning',
     },
-    label: true
+    label: true,
   },
   {
     _tag: 'CSidebarNavDivider',
-    className: 'm-2'
-  }
-]
+    className: 'm-2',
+  },
+];
 
-export default _nav
+export default _nav;

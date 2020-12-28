@@ -2,12 +2,12 @@ import React from 'react';
 import { CCard, CCardBody, CCardHeader, CCol, CRow } from '@coreui/react';
 import CIcon from '@coreui/icons-react';
 
-import usersData from './UsersData';
+import roomDatas from './roomDatas';
 
-const User = ({ match }) => {
-  const user = usersData.find((user) => user.id.toString() === match.params.id);
-  const userDetails = user
-    ? Object.entries(user)
+const Room = ({ match }) => {
+  const room = roomDatas.find((room) => room.id.toString() === match.params.id);
+  const roomDetails = room
+    ? Object.entries(room)
     : [
         [
           'id',
@@ -16,16 +16,17 @@ const User = ({ match }) => {
           </span>,
         ],
       ];
+  console.log(roomDetails);
 
   return (
     <CRow>
       <CCol>
         <CCard>
-          <CCardHeader>User id: {match.params.id}</CCardHeader>
+          <CCardHeader>Room id: {match.params.id}</CCardHeader>
           <CCardBody>
             <table className="table table-striped table-hover">
               <tbody>
-                {userDetails.map(([key, value], index) => {
+                {roomDetails.map(([key, value], index) => {
                   return (
                     <tr key={index.toString()}>
                       <td>{`${key}:`}</td>
@@ -44,4 +45,4 @@ const User = ({ match }) => {
   );
 };
 
-export default User;
+export default Room;
