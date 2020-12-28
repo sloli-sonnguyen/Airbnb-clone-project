@@ -66,7 +66,7 @@ const Customers = () => {
               activePage={page}
               clickableRows
               onRowClick={(item) =>
-                history.push(`datatable/customers/${item.id}`)
+                history.push(`/datatable/customers/${item.id}`)
               }
               scopedSlots={{
                 status: (item) => (

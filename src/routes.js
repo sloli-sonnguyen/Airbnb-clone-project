@@ -65,7 +65,10 @@ const Rooms = React.lazy(() => import('./views/datatable/rooms/index'));
 const Room = React.lazy(() => import('./views/datatable/rooms/Room'));
 
 const Customers = React.lazy(() => import('./views/datatable/customers'));
+const Customer = React.lazy(() => import('./views/datatable/customers/Customer'));
+
 const Purchases = React.lazy(() => import('./views/datatable/purchases'));
+const Purchase = React.lazy(() => import('./views/datatable/purchases/Purchase'));
 
 // Edited
 const routes = [
@@ -82,8 +85,20 @@ const routes = [
     name: 'Room Details',
     component: Room,
   },
-  { path: '/datatable/customers', name: 'Customers', component: Customers },
-  { path: '/datatable/purchases', name: 'Purchases', component: Purchases },
+  { path: '/datatable/purchases', exact: true, name: 'Purchases', component: Purchases },
+  {
+    path: '/datatable/purchases/:id',
+    exact: true,
+    name: 'Purchase Details',
+    component: Purchase,
+  },
+  { path: '/datatable/customers', exact: true, name: 'Customers', component: Customers },
+  {
+    path: '/datatable/customers/:id',
+    exact: true,
+    name: 'Customer Details',
+    component: Customer,
+  },
   // Edited
   { path: '/base', name: 'Base', component: Cards, exact: true },
   { path: '/base/breadcrumbs', name: 'Breadcrumbs', component: Breadcrumbs },
