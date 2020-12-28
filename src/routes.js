@@ -75,7 +75,13 @@ const routes = [
   { path: '/theme/colors', name: 'Colors', component: Colors },
   { path: '/theme/typography', name: 'Typography', component: Typography },
   // Edited
-  { path: '/datatable/rooms', name: 'Rooms', component: Rooms },
+  { path: '/datatable/rooms', name: 'Rooms', exact: true, component: Rooms },
+  {
+    path: '/datatable/rooms/:id',
+    exact: true,
+    name: 'Room Details',
+    component: Room,
+  },
   { path: '/datatable/customers', name: 'Customers', component: Customers },
   { path: '/datatable/purchases', name: 'Purchases', component: Purchases },
   // Edited
@@ -132,12 +138,7 @@ const routes = [
   { path: '/users', exact: true, name: 'Users', component: Users },
   { path: '/users/:id', exact: true, name: 'User Details', component: User },
   // Edited
-  {
-    path: '/datatable/rooms/:id',
-    exact: true,
-    name: 'Room Details',
-    component: Room,
-  },
+
   // Edited
 ];
 

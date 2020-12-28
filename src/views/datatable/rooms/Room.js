@@ -9,13 +9,13 @@ const Room = ({ match }) => {
   const roomDetails = room
     ? Object.entries(room)
     : [
-        [
-          'id',
-          <span>
-            <CIcon className="text-muted" name="cui-icon-ban" /> Not found
+      [
+        'id',
+        <span>
+          <CIcon className="text-muted" name="cui-icon-ban" /> Not found
           </span>,
-        ],
-      ];
+      ],
+    ];
   console.log(roomDetails);
 
   return (
