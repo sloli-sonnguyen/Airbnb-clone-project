@@ -1,0 +1,127 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Quicksand", sans-serif;
+}
+ul {
+    list-style: none;
+}
+.footer {
+    font-size: 14px;
+    width: 100%;
+}
+.container {
+    width: 105rem;
+    margin: auto;
+}
+
+.footer__inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* footer__first */
+.footer__first {
+    width: 100%;
+    height: 30rem;
+
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #dddddd;
+}
+.footer__list {
+    display: flex;
+    flex-direction: column;
+    width: 19rem;
+}
+.footer__title {
+    margin-top: 3.3rem;
+    font-weight: bolder;
+}
+.footer__item {
+    margin-top: 1.3rem;
+}
+.footer__item:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+/* footer__last */
+.footer__last {
+    display: flex;
+    width: 100%;
+    height: 5rem;
+    justify-content: space-between;
+}
+.footer__infor {
+    width: 44rem;
+    display: flex;
+    align-items: center;
+}
+.item__infor-access:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+.item__infor {
+    margin-right: 0.5rem;
+}
+
+/* language-money-social */
+.container__language-money-social {
+    width: 26rem;
+    display: flex;
+    justify-content: space-between;
+}
+.language-money {
+    width: 13rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* language */
+.language {
+    display: flex;
+}
+.language p {
+    font-weight: bolder;
+    margin-left: 0.3rem;
+    cursor: pointer;
+    text-decoration: underline;
+}
+.language i {
+    height: 14px;
+    width: 14px;
+    padding-top: 0.2rem;
+    cursor: pointer;
+}
+
+/* money */
+.money {
+    display: flex;
+}
+.money i {
+    padding-top: 0.2rem;
+    cursor: pointer;
+}
+.money p {
+    margin-left: 0.3rem;
+    font-weight: bolder;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+/* social-icon */
+.social-icon {
+    display: flex;
+    align-items: center;
+
+    width: 8rem;
+    justify-content: space-between;
+}
+.social-icon i {
+    font-size: 20px;
+    cursor: pointer;
+}

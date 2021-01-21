@@ -1,0 +1,207 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    width: 105rem;
+    margin: auto;
+}
+
+.header {
+    top: 0%;
+    width: 100%;
+    position: fixed;
+    z-index: 1;
+}
+
+.header__inner {
+    width: 100%;
+    margin: 0;
+    background-color: white;
+}
+
+/* experence */
+.experiences {
+    background-color: black;
+    color: white;
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+    padding-left: 10rem;
+    padding-right: 10rem;
+}
+
+.experiences__intro {
+    display: flex;
+    justify-content: space-between;
+}
+
+.experiences-intro__wrapper {
+    width: 53%;
+}
+
+.experiences-intro__wrapper h1 {
+    margin: 0;
+}
+
+.experiences-intro__wrapper p {
+    margin-top: 0.5rem;
+    margin-bottom: 2rem;
+}
+
+.experiences__intro .btn-wrapper {
+    display: flex;
+    align-items: center;
+}
+
+.btn-wrapper__btn {
+    border: 1px solid white;
+    background-color: transparent;
+    color: white;
+    outline: none;
+    padding: 1rem;
+    padding-left: 1.2rem;
+    padding-right: 1.2rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+    font-size: 1rem;
+}
+
+.btn-wrapper__btn:active {
+    transform: scale(0.95);
+}
+
+.experiences__grid {
+    display: grid;
+    grid-gap: 1rem;
+    grid-template-columns: auto auto auto auto;
+}
+
+.experiences-grid__item {
+    border-radius: 18px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.experiences-grid-item__quoteWrapper {
+    position: absolute;
+    bottom: 0;
+    background-color: rgb(34, 34, 34);
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+}
+
+.experiences-grid-item__quoteWrapper h4 {
+    padding-left: 1rem;
+    padding-bottom: 2rem;
+}
+
+.experiences-grid__item:nth-child(1) {
+    grid-area: 1 / 1 / 3 / 3;
+    height: 80vh;
+    background-image: url(https://a0.muscache.com/im/pictures/78010337-07f0-4154-9528-363b97b54699.jpg?im_w=720);
+    background-size: cover;
+}
+
+.experiences-grid__item:nth-child(2) {
+    background-image: url(https://a0.muscache.com/im/pictures/0735e435-3d1d-4aec-b536-9ee54f299ce6.jpg?im_w=480);
+    background-size: cover;
+}
+
+.experiences-grid__item:nth-child(3) {
+    background-image: url(https://a0.muscache.com/im/pictures/1793b6aa-4c3c-4193-a65a-09b440b2ca2c.jpg?im_w=480);
+    background-size: cover;
+}
+
+.experiences-grid__item:nth-child(4) {
+    grid-area: 2 / 3 / 3 / 5;
+    background-image: url(https://a0.muscache.com/im/pictures/925f99bb-c5bc-4d82-9803-518abeef7e2e.jpg?im_w=720);
+    background-size: cover;
+}
+
+.experiences-grid__item h4 {
+    margin-top: 2rem;
+}
+
+/* homepage intro */
+.homepage__intro {
+    width: 100%;
+    height: 55rem;
+    background-image: url(https://a0.muscache.com/im/pictures/f0483d09-7d13-42d0-a40a-46d585c42220.jpg?im_w=1440);
+    background-position: center;
+    background-size: cover;
+    position: relative;
+}
+
+.homepage__intro-content {
+    width: 26rem;
+    height: 12rem;
+    position: absolute;
+    left: 6rem;
+    top: 20rem;
+}
+.homepage__intro-content__title {
+    font-size: 3.5rem;
+    font-weight: bold;
+    margin-bottom: 2rem;
+    color: white;
+}
+.homepage__intro-content__text {
+    font-size: 1.28rem;
+    color: white;
+}
+
+/* 3 small box */
+p {
+    font-size: 14px;
+}
+.three-small-box {
+    width: 100%;
+    height: 34rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.three-small-box-container {
+    width: 83%;
+    display: flex;
+
+    justify-content: space-between;
+}
+.three-small-box__box {
+    width: 27.5rem;
+    height: 25.5rem;
+
+    display: flex;
+    flex-direction: column;
+    border-radius: 1rem;
+    align-items: center;
+
+    box-shadow: 0px 0px 5px 0px #a198a1;
+}
+.image__box {
+    border-radius: 1rem;
+
+    height: 18rem;
+    width: 27.5rem;
+}
+.image__box img {
+    height: 18rem;
+    width: 27.5rem;
+    border-radius: 1rem 1rem 0rem 0rem;
+}
+
+.content__box {
+    width: 25rem;
+
+    margin-top: 1rem;
+}
+
+.para__box {
+    margin: 0;
+    margin-bottom: 20px;
+}
