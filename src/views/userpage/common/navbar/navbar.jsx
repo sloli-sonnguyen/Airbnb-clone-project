@@ -13,6 +13,7 @@ function Navbar(props) {
 
     const [activeSearchBox, setactiveSearchBox] = useState(false);
     const [activeDatePicker, setActiveDatePicker] = useState(false);
+    const [activeMenu, setActiveMenu] = useState(false);
 
     useEffect(() => {
         window.addEventListener("scroll", (event) => {
@@ -117,11 +118,7 @@ function Navbar(props) {
                 </div>
             )}
             <div className="navbar__menu">
-                <button className="btn language-select-button">
-                    <i className="far fa-globe"></i>
-                    <i className="fas fa-chevron-down"></i>
-                </button>
-                <button className="btn menu-button">
+                <button className="btn menu-button" onClick={() => setActiveMenu(!activeMenu)}>
                     <i className="fas fa-bars"></i>
                 </button>
                 {/* menu show */}
@@ -136,21 +133,27 @@ function Navbar(props) {
                             <p>VNĐ</p>
                         </div>
                     </div> */}
-                    <div className="menu-show-box__menu2">
-                        <ul className="menu-show-box__menu2-list">
-                            <li className="menu-show__item menu-show__title">Đăng ký</li>
-                            <li className="menu-show__item">Đăng nhập</li>
-                            <li className="menu-show__item">Cho thuê nhà</li>
-                            <li className="menu-show__item">Tổ chức</li>
-                            <li className="menu-show__item">Trải nghiệm</li>
-                        </ul>
-                    </div>
+
+                    {
+                        activeMenu && <div className="menu-show-box__menu2">
+                            <ul className="menu-show-box__menu2-list">
+                                <li className="menu-show__item menu-show__title">Đăng ký</li>
+                                <li className="menu-show__item">Đăng nhập</li>
+                                <li className="menu-show__item">Cho thuê nhà</li>
+                                <li className="menu-show__item">Tổ chức</li>
+                                <li className="menu-show__item">Trải nghiệm</li>
+                            </ul>
+                        </div>
+                    }
                 </div>
             </div>
             {/* active searchbox overlay */}
             {activeDatePicker && (
                 <div className="overlay-active" onClick={onHandleOverlayClick}></div>
             )}
+
+
+
         </div>
     );
 }

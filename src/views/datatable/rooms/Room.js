@@ -27,7 +27,7 @@ const Room = ({ match }) => {
         const roomData = res.data[0];
         setRoom(roomData);
       })
-  }, [])
+  }, [id])
   return (
     <div>
       <CRow>

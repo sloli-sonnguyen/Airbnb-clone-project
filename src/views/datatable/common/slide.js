@@ -20,7 +20,7 @@ const Slider = () => {
             .then(function (res) {
                 setImages(res.data);
             })
-    }, [])
+    }, [id])
     return (
         <div className="slide-wrapper">
             <CRow>

@@ -1,11 +1,14 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { CCard, CCardBody, CCardHeader, CCol, CRow } from '@coreui/react';
 import CIcon from '@coreui/icons-react';
+import '../common/style.css';
+import axios from 'axios';
 
-import purchaseDatas from './purchaseDatas';
+
 
 const Purchase = ({ match }) => {
-    const purchase = purchaseDatas.find((purchase) => purchase.id.toString() === match.params.id);
+    let id = match.params.id;
+    const [purchase, setPurchase] = useState({});
     const purchaseDetails = purchase
         ? Object.entries(purchase)
         : [
@@ -17,6 +20,14 @@ const Purchase = ({ match }) => {
             ],
         ];
     console.log(purchaseDetails);
+
+    useEffect(() => {
+        axios.get(`http://localhost:5000/purchases/${id}`)
+            .then(function (res) {
+                const purchaseData = res.data[0];
+                setPurchase(purchaseData);
+            })
+    }, [id])
 
     return (
         <CRow>

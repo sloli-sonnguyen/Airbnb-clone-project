@@ -63,7 +63,6 @@ const Purchases = () => {
               items={purchaseDatas}
               fields={[
                 'id',
-                { key: 'name', _classes: 'font-weight-bold' },
                 'user_id',
                 'room_id',
                 'start_date',

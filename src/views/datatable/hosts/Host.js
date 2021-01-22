@@ -6,7 +6,7 @@ import axios from 'axios';
 
 
 const Host = ({ match }) => {
-    const id = match.params.id;
+    let id = match.params.id;
     const [host, setHost] = useState({});
     const hostDetails = host
         ? Object.entries(host)
@@ -25,33 +25,39 @@ const Host = ({ match }) => {
                 const hostData = res.data[0];
                 setHost(hostData);
             })
-    }, [])
+    }, [id])
+
 
 
     return (
-        <CRow>
-            <CCol>
-                <CCard>
-                    <CCardHeader>host id: {match.params.id}</CCardHeader>
-                    <CCardBody>
-                        <table className="table table-striped table-hover">
-                            <tbody>
-                                {hostDetails.map(([key, value], index) => {
-                                    return (
-                                        <tr key={index.toString()}>
-                                            <td>{`${key}:`}</td>
-                                            <td>
-                                                <strong>{value}</strong>
-                                            </td>
-                                        </tr>
-                                    );
-                                })}
-                            </tbody>
-                        </table>
-                    </CCardBody>
-                </CCard>
-            </CCol>
-        </CRow>
+        <div>
+            <CRow>
+                <CCol>
+                    <CCard>
+                        <CCardHeader>host id: {match.params.id}</CCardHeader>
+                        <CCardBody>
+                            <table className="table table-striped table-hover">
+                                <tbody>
+                                    {hostDetails.map(([key, value], index) => {
+                                        return (
+                                            <tr key={index.toString()}>
+                                                <td>{`${key}:`}</td>
+                                                <td>
+                                                    <strong>{value}</strong>
+                                                </td>
+                                            </tr>
+                                        );
+                                    })}
+                                </tbody>
+                            </table>
+                        </CCardBody>
+                    </CCard>
+                </CCol>
+            </CRow>
+            <div className="host-avatar">
+                <img src={host.avatar_url} alt="avas" />
+            </div>
+        </div>
     );
 };
 

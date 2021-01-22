@@ -64,7 +64,7 @@ const Hosts = () => {
                                 'id',
                                 { key: 'name', _classes: 'font-weight-bold' },
                                 'rating',
-                                'avatarUrl',
+                                'avatar_url',
                             ]}
                             hover
                             striped

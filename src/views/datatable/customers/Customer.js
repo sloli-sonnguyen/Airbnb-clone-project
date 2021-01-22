@@ -23,7 +23,7 @@ const Customer = ({ match }) => {
         const customerData = res.data[0];
         setCustomer(customerData);
       })
-  }, [])
+  }, [id])
 
   return (
     <CRow>

@@ -128,7 +128,7 @@ span {
 .btn {
     border: none;
     background-color: white;
-    outline: none;
+    outline: none !important;
     cursor: pointer;
 }
 
@@ -159,15 +159,12 @@ span {
 
     padding: 0.3rem 0.6rem;
     border-radius: 22px;
-    transition: 0.3s;
-}
-.menu-button:hover {
-    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.2);
+
+    outline: none !important;
 }
 
 .menu-button i:nth-child(1) {
     font-size: 1rem;
-
     margin: 0 8px;
 }
 
@@ -196,15 +193,13 @@ span {
 
 /* menu show */
 .menu-show ul {
-    list-style: none;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
 }
 .menu-show {
-    display: none;
     position: absolute;
     top: 80%;
     right: 9.5%;
     border-radius: 10px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
 }
 .menu-show-box__menu1 {
     width: 11rem;
@@ -240,7 +235,7 @@ p {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 8rem;
+    height: 10rem;
     background-color: white;
     border-radius: 12px;
 }
