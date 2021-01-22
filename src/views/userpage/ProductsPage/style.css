@@ -74,6 +74,12 @@ button {
     background-color: rgba(255, 255, 255, 0.8);
     cursor: pointer;
     width: 1/5;
+
+    color: rgb(58, 58, 58);
+}
+.grid-item:hover {
+    color: rgb(29, 29, 29);
+    text-decoration: none;
 }
 
 .grid-item p {

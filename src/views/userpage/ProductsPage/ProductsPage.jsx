@@ -1,10 +1,41 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import Navbar from '../common/navbar/navbar';
 import Footer from '../common/footer/index';
 import './style.css';
+import { Link } from 'react-router-dom';
+
+
+
 
 
 function ProductsPage(props) {
+    const [products, setProducts] = useState([]);
+
+
+    useEffect(() => {
+        axios.get('http://localhost:5000/rooms').then(res => {
+            const { data } = res;
+            setProducts(data);
+        });
+    }, []);
+    const listItems = products.map((item, index) => {
+        return (
+            <Link to={`/s/products/${item.id}`} key={index} className="grid-item">
+                <div className="grid-item__img-container">
+                    <img
+                        src={item.url}
+                        alt="asa"
+                    />
+                </div>
+                <div className="grid-item__description">
+                    <p>Toàn bộ căn hộ · {item.city}</p>
+                    <p>{item.name}</p>
+                    <p><span>{item.price} $</span>/đêm</p>
+                </div>
+            </Link>
+        )
+    })
     return (
         <div className="products-page">
             <header className="header">
@@ -36,7 +67,7 @@ function ProductsPage(props) {
                         <div className="record__container-img">
                             <img
                                 src="https://a0.muscache.com/airbnb/static/packages/icon-uc-trophy.9ee78aa1.gif"
-                                alt=""
+                                alt="asas"
                             />
                         </div>
                         <p>
@@ -48,176 +79,7 @@ function ProductsPage(props) {
                         <p></p>
                     </div>
                     <div className="grid-container">
-                        <div className="grid-item">
-                            <div className="grid-item__img-container">
-                                <img
-                                    src="https://a0.muscache.com/im/pictures/f108bdba-baca-4693-b043-1c216769770f.jpg?im_w=720"
-                                    alt=""
-                                />
-                            </div>
-                            <div className="grid-item__description">
-                                <div className="grid-item-description__star">
-                                    <i className="fas fa-star"></i>
-                                    <p>4.93 (43)</p>
-                                </div>
-                                <p>Toàn bộ căn hộ · Ba Đình</p>
-                                <p>Lily - LAURA Studio❣️CENTER of BADIN..</p>
-                                <p><span>$20</span>/đêm</p>
-                            </div>
-                        </div>
-                        <div className="grid-item">
-                            <div className="grid-item__img-container">
-                                <img
-                                    src="https://a0.muscache.com/im/pictures/d68af3bf-65a5-410a-8aa4-56e7af6f86da.jpg?im_w=720"
-                                    alt=""
-                                />
-                            </div>
-                            <div className="grid-item__description">
-                                <div className="grid-item-description__star">
-                                    <i className="fas fa-star"></i>
-                                    <p>4.67 (75)</p>
-                                </div>
-                                <p>Toàn bộ căn hộ · Ba Đình</p>
-                                <p>Lily - LAURA Studio❣️CENTER of BADIN..</p>
-                                <p><span >$18</span>/đêm</p>
-                            </div>
-                        </div>
-                        <div className="grid-item">
-                            <div className="grid-item__img-container">
-                                <img
-                                    src="https://a0.muscache.com/im/pictures/0ec329ab-6ad7-40ea-88e4-4c3e803c0891.jpg?im_w=720"
-                                    alt=""
-                                />
-                            </div>
-                            <div className="grid-item__description">
-                                <div className="grid-item-description__star">
-                                    <i className="fas fa-star"></i>
-                                    <p>4.67 (75)</p>
-                                </div>
-                                <p>Toàn bộ căn hộ · Ba Đình</p>
-                                <p>Lily - LAURA Studio❣️CENTER of BADIN..</p>
-                                <p><span >$18</span>/đêm</p>
-                            </div>
-                        </div>
-                        <div className="grid-item">
-                            <div className="grid-item__img-container">
-                                <img
-                                    src="https://a0.muscache.com/im/pictures/595a332f-a48f-4956-89d8-80cb3dfa149a.jpg?im_w=720"
-                                    alt=""
-                                />
-                            </div>
-                            <div className="grid-item__description">
-                                <div className="grid-item-description__star">
-                                    <i className="fas fa-star"></i>
-                                    <p>4.67 (75)</p>
-                                </div>
-                                <p>Toàn bộ căn hộ · Ba Đình</p>
-                                <p>Lily - LAURA Studio❣️CENTER of BADIN..</p>
-                                <p><span>$18</span>/đêm</p>
-                            </div>
-                        </div>
-                        <div className="grid-item">
-                            <div className="grid-item__img-container">
-                                <img
-                                    src="https://a0.muscache.com/im/pictures/18485690-95d0-4d8f-a9ce-ff553d791e38.jpg?im_w=720"
-                                    alt=""
-                                />
-                            </div>
-                            <div className="grid-item__description">
-                                <div className="grid-item-description__star">
-                                    <i className="fas fa-star"></i>
-                                    <p>4.67 (75)</p>
-                                </div>
-                                <p>Toàn bộ căn hộ · Ba Đình</p>
-                                <p>Lily - LAURA Studio❣️CENTER of BADIN..</p>
-                                <p><span>$18</span>/đêm</p>
-                            </div>
-                        </div>
-                        <div className="grid-item">
-                            <div className="grid-item__img-container">
-                                <img
-                                    src="https://a0.muscache.com/im/pictures/45fd51c5-0cd5-4106-9737-a703b6917630.jpg?im_w=720"
-                                    alt=""
-                                />
-                            </div>
-                            <div className="grid-item__description">
-                                <div className="grid-item-description__star">
-                                    <i className="fas fa-star"></i>
-                                    <p>4.67 (75)</p>
-                                </div>
-                                <p>Toàn bộ căn hộ · Ba Đình</p>
-                                <p>Lily - LAURA Studio❣️CENTER of BADIN..</p>
-                                <p><span >$18</span>/đêm</p>
-                            </div>
-                        </div>
-                        <div className="grid-item">
-                            <div className="grid-item__img-container">
-                                <img
-                                    src="https://a0.muscache.com/im/pictures/a366fe5e-c992-4c6d-b887-1496ebbcb482.jpg?im_w=720"
-                                    alt=""
-                                />
-                            </div>
-                            <div className="grid-item__description">
-                                <div className="grid-item-description__star">
-                                    <i className="fas fa-star"></i>
-                                    <p>4.67 (75)</p>
-                                </div>
-                                <p>Toàn bộ căn hộ · Ba Đình</p>
-                                <p>Lily - LAURA Studio❣️CENTER of BADIN..</p>
-                                <p><span>$18</span>/đêm</p>
-                            </div>
-                        </div>
-                        <div className="grid-item">
-                            <div className="grid-item__img-container">
-                                <img
-                                    src="https://a0.muscache.com/im/pictures/0ec329ab-6ad7-40ea-88e4-4c3e803c0891.jpg?im_w=720"
-                                    alt=""
-                                />
-                            </div>
-                            <div className="grid-item__description">
-                                <div className="grid-item-description__star">
-                                    <i className="fas fa-star"></i>
-                                    <p>4.67 (75)</p>
-                                </div>
-                                <p>Toàn bộ căn hộ · Ba Đình</p>
-                                <p>Lily - LAURA Studio❣️CENTER of BADIN..</p>
-                                <p><span>$18</span>/đêm</p>
-                            </div>
-                        </div>
-                        <div className="grid-item">
-                            <div className="grid-item__img-container">
-                                <img
-                                    src="https://a0.muscache.com/im/pictures/45fd51c5-0cd5-4106-9737-a703b6917630.jpg?im_w=720"
-                                    alt=""
-                                />
-                            </div>
-                            <div className="grid-item__description">
-                                <div className="grid-item-description__star">
-                                    <i className="fas fa-star"></i>
-                                    <p>4.67 (75)</p>
-                                </div>
-                                <p>Toàn bộ căn hộ · Ba Đình</p>
-                                <p>Lily - LAURA Studio❣️CENTER of BADIN..</p>
-                                <p><span >$18</span>/đêm</p>
-                            </div>
-                        </div>
-                        <div className="grid-item">
-                            <div className="grid-item__img-container">
-                                <img
-                                    src="https://a0.muscache.com/im/pictures/0ec329ab-6ad7-40ea-88e4-4c3e803c0891.jpg?im_w=720"
-                                    alt=""
-                                />
-                            </div>
-                            <div className="grid-item__description">
-                                <div className="grid-item-description__star">
-                                    <i className="fas fa-star"></i>
-                                    <p>4.67 (75)</p>
-                                </div>
-                                <p>Toàn bộ căn hộ · Ba Đình</p>
-                                <p>Lily - LAURA Studio❣️CENTER of BADIN..</p>
-                                <p><span>$18</span>/đêm</p>
-                            </div>
-                        </div>
+                        {listItems}
                     </div>
 
                     {/* <!-- <div class="router-page">

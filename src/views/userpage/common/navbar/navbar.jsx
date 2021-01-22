@@ -4,6 +4,8 @@ import "./style.css";
 // date picker
 import { Datepicker, START_DATE } from "@datepicker-react/styled";
 import { ThemeProvider } from "styled-components";
+import LoginPopup from '../login/index';
+import SignupPopup from '../signup/index';
 function Navbar(props) {
     const [state, setState] = useState({
         startDate: null,
@@ -14,6 +16,8 @@ function Navbar(props) {
     const [activeSearchBox, setactiveSearchBox] = useState(false);
     const [activeDatePicker, setActiveDatePicker] = useState(false);
     const [activeMenu, setActiveMenu] = useState(false);
+    const [activePopupLogin, setActivePopupLogin] = useState(false);
+    const [activePopupSignup, setActivePopupSignup] = useState(false);
 
     useEffect(() => {
         window.addEventListener("scroll", (event) => {
@@ -36,6 +40,15 @@ function Navbar(props) {
 
     function onHandleOverlayClick() {
         setActiveDatePicker(false);
+    }
+
+    //
+    function onHandleLoginButtonClick() {
+        setActivePopupLogin(!activePopupLogin);
+    }
+
+    function onHandleSignupButtonClick() {
+        setActivePopupSignup(!activePopupSignup);
     }
     return (
         <div className="navbar-version-1 container">
@@ -137,8 +150,8 @@ function Navbar(props) {
                     {
                         activeMenu && <div className="menu-show-box__menu2">
                             <ul className="menu-show-box__menu2-list">
-                                <li className="menu-show__item menu-show__title">Đăng ký</li>
-                                <li className="menu-show__item">Đăng nhập</li>
+                                <li className="menu-show__item menu-show__title" onClick={onHandleSignupButtonClick}>Đăng ký</li>
+                                <li className="menu-show__item" onClick={onHandleLoginButtonClick}>Đăng nhập</li>
                                 <li className="menu-show__item">Cho thuê nhà</li>
                                 <li className="menu-show__item">Tổ chức</li>
                                 <li className="menu-show__item">Trải nghiệm</li>
@@ -152,8 +165,12 @@ function Navbar(props) {
                 <div className="overlay-active" onClick={onHandleOverlayClick}></div>
             )}
 
-
-
+            {
+                activePopupLogin && <LoginPopup closeLoginPopup={onHandleLoginButtonClick} />
+            }
+            {
+                activePopupSignup && <SignupPopup closeSignupPopup={onHandleSignupButtonClick} />
+            }
         </div>
     );
 }

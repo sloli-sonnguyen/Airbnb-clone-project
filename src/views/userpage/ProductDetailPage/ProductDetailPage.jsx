@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Navbar from '../common/navbar/navbar';
 import Footer from '../common/footer/index';
+import axios from 'axios'
 import './style.css';
 
 function ProductDetailPage(props) {

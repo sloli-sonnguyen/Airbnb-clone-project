@@ -8,9 +8,7 @@ import {
   CDataTable,
   CRow
 } from '@coreui/react'
-import { DocsLink } from 'src/reusable'
 
-import usersData from '../../users/UsersData'
 
 const getBadge = status => {
   switch (status) {
@@ -21,9 +19,11 @@ const getBadge = status => {
     default: return 'primary'
   }
 }
-const fields = ['name', 'registered', 'role', 'status']
+const fields = ['id', 'name', 'rating', 'avatar']
 
-const Tables = () => {
+
+const Tables = (props) => {
+  const usersData = props.data || [];
   return (
     <>
       {/* <CRow>
@@ -178,9 +178,6 @@ const Tables = () => {
       <CRow>
         <CCol>
           <CCard>
-            <CCardHeader>
-              Combined All dark Table
-            </CCardHeader>
             <CCardBody>
               <CDataTable
                 items={usersData}
@@ -193,14 +190,19 @@ const Tables = () => {
                 itemsPerPage={10}
                 pagination
                 scopedSlots={{
-                  'status':
+                  'avatar':
                     (item) => (
                       <td>
-                        <CBadge color={getBadge(item.status)}>
-                          {item.status}
-                        </CBadge>
+                        <img height={30} width={30} src={item.avatar_url} />
                       </td>
-                    )
+                    ),
+                  'rating': (item) => (
+                    <td>
+                      <CBadge color={'warning'}>
+                        {item.rating}
+                      </CBadge>
+                    </td>
+                  )
                 }}
               />
             </CCardBody>

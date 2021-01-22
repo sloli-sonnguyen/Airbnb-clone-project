@@ -22,9 +22,6 @@ const Homepage = React.lazy(() => import('./views/userpage/HomePage/HomePage'));
 const ProductsPage = React.lazy(() => import('./views/userpage/ProductsPage/ProductsPage'));
 const ProductDetailPage = React.lazy(() => import('./views/userpage/ProductDetailPage/ProductDetailPage'));
 
-const Demo = () => {
-  return <h1>Xin hcao</h1>
-}
 
 class App extends Component {
 
