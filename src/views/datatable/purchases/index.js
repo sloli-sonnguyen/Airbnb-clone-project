@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
+import axios from 'axios';
+import '../common/style.css';
 import {
   CBadge,
   CCard,
@@ -11,7 +13,6 @@ import {
   CPagination,
 } from '@coreui/react';
 
-import purchaseDatas from './purchaseDatas';
 
 const getBadge = (status) => {
   switch (status) {
@@ -33,6 +34,7 @@ const Purchases = () => {
   const queryPage = useLocation().search.match(/page=([0-9]+)/, '');
   const currentPage = Number(queryPage && queryPage[1] ? queryPage[1] : 1);
   const [page, setPage] = useState(currentPage);
+  const [purchaseDatas, setPurchaseDatas] = useState([]);
 
   const pageChange = (newPage) => {
     currentPage !== newPage &&
@@ -42,6 +44,14 @@ const Purchases = () => {
   useEffect(() => {
     currentPage !== page && setPage(currentPage);
   }, [currentPage, page]);
+
+
+  useEffect(() => {
+    axios.get('http://localhost:5000/purchases')
+      .then(function (res) {
+        setPurchaseDatas(res.data);
+      })
+  }, []);
 
   return (
     <CRow>
@@ -54,15 +64,17 @@ const Purchases = () => {
               fields={[
                 'id',
                 { key: 'name', _classes: 'font-weight-bold' },
-                'address',
-                'description',
-                'created_at',
+                'user_id',
+                'room_id',
+                'start_date',
+                'end_date',
                 'price',
-                'status',
+                'total',
+                'created_at'
               ]}
               hover
               striped
-              itemsPerPage={8}
+              itemsPerPage={10}
               activePage={page}
               clickableRows
               onRowClick={(item) =>

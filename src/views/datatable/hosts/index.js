@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
+import '../common/style.css';
+import axios from 'axios';
 import {
     CBadge,
     CCard,
@@ -11,7 +13,6 @@ import {
     CPagination,
 } from '@coreui/react';
 
-import hostDatas from './hostDatas';
 
 const getBadge = (status) => {
     switch (status) {
@@ -33,6 +34,7 @@ const Hosts = () => {
     const queryPage = useLocation().search.match(/page=([0-9]+)/, '');
     const currentPage = Number(queryPage && queryPage[1] ? queryPage[1] : 1);
     const [page, setPage] = useState(currentPage);
+    const [hostDatas, setHostDatas] = useState([]);
 
     const pageChange = (newPage) => {
         currentPage !== newPage &&
@@ -42,6 +44,13 @@ const Hosts = () => {
     useEffect(() => {
         currentPage !== page && setPage(currentPage);
     }, [currentPage, page]);
+
+    useEffect(() => {
+        axios.get('http://localhost:5000/hosts')
+            .then(function (res) {
+                setHostDatas(res.data);
+            })
+    }, []);
 
     return (
         <CRow>
@@ -54,11 +63,8 @@ const Hosts = () => {
                             fields={[
                                 'id',
                                 { key: 'name', _classes: 'font-weight-bold' },
-                                'address',
-                                'description',
-                                'created_at',
-                                'price',
-                                'status',
+                                'rating',
+                                'avatarUrl',
                             ]}
                             hover
                             striped

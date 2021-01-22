@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
 import axios from 'axios';
+import '../common/style.css';
 
 import {
   CBadge,
@@ -47,7 +48,7 @@ const Customers = () => {
   }, [currentPage, page]);
 
   useEffect(() => {
-    axios.get('http://localhost:5000/rooms')
+    axios.get('http://localhost:5000/users')
       .then(function (res) {
         setCustomerDatas(res.data);
       })
@@ -65,14 +66,15 @@ const Customers = () => {
                 'id',
                 { key: 'name', _classes: 'font-weight-bold' },
                 'address',
-                'description',
-                'created_at',
-                'price',
-                'status',
+                'email',
+                'password',
+                'phone_number',
+                'gender',
+                'role'
               ]}
               hover
               striped
-              itemsPerPage={8}
+              itemsPerPage={10}
               activePage={page}
               clickableRows
               onRowClick={(item) =>

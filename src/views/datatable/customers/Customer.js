@@ -1,11 +1,12 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { CCard, CCardBody, CCardHeader, CCol, CRow } from '@coreui/react';
 import CIcon from '@coreui/icons-react';
-
-import customerDatas from './customerDatas';
+import axios from 'axios';
+import '../common/style.css';
 
 const Customer = ({ match }) => {
-  const customer = customerDatas.find((customer) => customer.id.toString() === match.params.id);
+  const id = match.params.id;
+  const [customer, setCustomer] = useState({});
   const customerDetails = customer
     ? Object.entries(customer)
     : [
@@ -16,13 +17,19 @@ const Customer = ({ match }) => {
           </span>,
       ],
     ];
-  console.log(customerDetails);
+  useEffect(() => {
+    axios.get(`http://localhost:5000/users/${id}`)
+      .then(function (res) {
+        const customerData = res.data[0];
+        setCustomer(customerData);
+      })
+  }, [])
 
   return (
     <CRow>
       <CCol>
         <CCard>
-          <CCardHeader>customer id: {match.params.id}</CCardHeader>
+          <CCardHeader>Customer id: {match.params.id}</CCardHeader>
           <CCardBody>
             <table className="table table-striped table-hover">
               <tbody>

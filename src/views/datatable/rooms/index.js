@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
-import './style.css';
+import '../common/style.css';
 import axios from 'axios';
 import {
   CBadge,
@@ -48,7 +48,6 @@ const Rooms = () => {
   useEffect(() => {
     axios.get('http://localhost:5000/rooms')
       .then(function (res) {
-        console.log(res.data);
         setRoomDatas(res.data);
       })
   }, []);

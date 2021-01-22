@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { CCard, CCardBody, CCardHeader, CCol, CRow } from '@coreui/react';
 import CIcon from '@coreui/icons-react';
+import '../common/style.css';
+import axios from 'axios';
 
-import hostDatas from './hostDatas';
 
 const Host = ({ match }) => {
-    const host = hostDatas.find((host) => host.id.toString() === match.params.id);
+    const id = match.params.id;
+    const [host, setHost] = useState({});
     const hostDetails = host
         ? Object.entries(host)
         : [
@@ -16,7 +18,15 @@ const Host = ({ match }) => {
           </span>,
             ],
         ];
-    console.log(hostDetails);
+
+    useEffect(() => {
+        axios.get(`http://localhost:5000/hosts/${id}`)
+            .then(function (res) {
+                const hostData = res.data[0];
+                setHost(hostData);
+            })
+    }, [])
+
 
     return (
         <CRow>
