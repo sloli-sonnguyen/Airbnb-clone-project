@@ -70,36 +70,58 @@ const Customer = React.lazy(() => import('./views/datatable/customers/Customer')
 const Purchases = React.lazy(() => import('./views/datatable/purchases'));
 const Purchase = React.lazy(() => import('./views/datatable/purchases/Purchase'));
 
+const Hosts = React.lazy(() => import('./views/datatable/hosts'));
+const Host = React.lazy(() => import('./views/datatable/hosts/Host'));
+
+const createRoom = React.lazy(() => import('./views/method/createRoom/index'));
+
 // Edited
 const routes = [
-  { path: '/', exact: true, name: 'Home' },
-  { path: '/dashboard', name: 'Dashboard', component: Dashboard },
+  { path: '/', exact: true, name: 'Trang chủ' },
+  { path: '/dashboard', name: 'Bảng điều khiển', component: Dashboard },
   { path: '/theme', name: 'Theme', component: Colors, exact: true },
   { path: '/theme/colors', name: 'Colors', component: Colors },
   { path: '/theme/typography', name: 'Typography', component: Typography },
   // Edited
-  { path: '/datatable/rooms', name: 'Rooms', exact: true, component: Rooms },
+  { path: '/datatable/rooms', name: 'Phòng', exact: true, component: Rooms },
   {
     path: '/datatable/rooms/:id',
     exact: true,
-    name: 'Room Details',
+    name: 'Chi tiết phòng',
     component: Room,
   },
-  { path: '/datatable/purchases', exact: true, name: 'Purchases', component: Purchases },
+  { path: '/datatable/purchases', exact: true, name: 'Đơn thuê nơi ở', component: Purchases },
   {
     path: '/datatable/purchases/:id',
     exact: true,
-    name: 'Purchase Details',
+    name: 'Chi tiết đơn thuê nhà',
     component: Purchase,
   },
-  { path: '/datatable/customers', exact: true, name: 'Customers', component: Customers },
+  { path: '/datatable/customers', exact: true, name: 'Khách hàng', component: Customers },
   {
     path: '/datatable/customers/:id',
     exact: true,
-    name: 'Customer Details',
+    name: 'Chi tiết khách hàng',
     component: Customer,
   },
+  { path: '/datatable/hosts', exact: true, name: 'Chủ nhà', component: Hosts },
+  {
+    path: '/datatable/hosts/:id',
+    exact: true,
+    name: 'Chi tiết chủ nhà',
+    component: Host,
+  },
   // Edited
+
+  // method
+  {
+    path: '/method/createRoom',
+    exact: true,
+    name: 'Tạo nơi ở mới',
+    component: createRoom,
+  },
+
+  //method
   { path: '/base', name: 'Base', component: Cards, exact: true },
   { path: '/base/breadcrumbs', name: 'Breadcrumbs', component: Breadcrumbs },
   { path: '/base/cards', name: 'Cards', component: Cards },

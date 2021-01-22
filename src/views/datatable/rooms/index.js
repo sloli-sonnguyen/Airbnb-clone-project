@@ -46,7 +46,7 @@ const Rooms = () => {
     <CRow>
       <CCol>
         <CCard>
-          <CCardHeader>Rooms</CCardHeader>
+          <CCardHeader>Phòng</CCardHeader>
           <CCardBody>
             <CDataTable
               items={roomDatas}

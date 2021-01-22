@@ -47,7 +47,7 @@ const Purchases = () => {
     <CRow>
       <CCol>
         <CCard>
-          <CCardHeader>Orders</CCardHeader>
+          <CCardHeader>Đơn thuê nơi ở</CCardHeader>
           <CCardBody>
             <CDataTable
               items={purchaseDatas}

@@ -47,7 +47,7 @@ const Customers = () => {
     <CRow>
       <CCol>
         <CCard>
-          <CCardHeader>customers</CCardHeader>
+          <CCardHeader>Khách hàng</CCardHeader>
           <CCardBody>
             <CDataTable
               items={customerDatas}

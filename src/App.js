@@ -22,6 +22,10 @@ const Homepage = React.lazy(() => import('./views/userpage/HomePage/HomePage'));
 const ProductsPage = React.lazy(() => import('./views/userpage/ProductsPage/ProductsPage'));
 const ProductDetailPage = React.lazy(() => import('./views/userpage/ProductDetailPage/ProductDetailPage'));
 
+const Demo = () => {
+  return <h1>Xin hcao</h1>
+}
+
 class App extends Component {
 
   render() {
@@ -29,14 +33,17 @@ class App extends Component {
       <HashRouter>
         <React.Suspense fallback={loading}>
           <Switch>
+            {/* customer */}
+            <Route exact path="/s" name="HomeUser" render={props => <Homepage {...props} />} />
+            <Route exact path="/s/products" name="ProductsPage" render={props => <ProductsPage {...props} />} />
+            <Route exact path="/s/products/:id" name="ProductDetailPage" render={props => <ProductDetailPage {...props} />} />
+            {/* admin */}
             <Route exact path="/admin/login" name="Login Page" render={props => <Login {...props} />} />
             <Route exact path="/admin/register" name="Register Page" render={props => <Register {...props} />} />
+            <Route path="/" name="admin home" render={props => <TheLayout {...props} />} />
+            {/* fail */}
             <Route exact path="/404" name="Page 404" render={props => <Page404 {...props} />} />
             <Route exact path="/500" name="Page 500" render={props => <Page500 {...props} />} />
-            <Route path="/admin/" name="Home" render={props => <TheLayout {...props} />} />
-            <Route exact path="/" name="HomeUser" render={props => <Homepage {...props} />} />
-            <Route exact path="/products" name="ProductsPage" render={props => <ProductsPage {...props} />} />
-            <Route exact path="/products/:id" name="ProductDetailPage" render={props => <ProductDetailPage {...props} />} />
           </Switch>
         </React.Suspense>
       </HashRouter>
