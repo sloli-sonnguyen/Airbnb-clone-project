@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
+import axios from 'axios';
+
 import {
   CBadge,
   CCard,
@@ -11,7 +13,6 @@ import {
   CPagination,
 } from '@coreui/react';
 
-import customerDatas from './customerDatas';
 
 const getBadge = (status) => {
   switch (status) {
@@ -34,6 +35,8 @@ const Customers = () => {
   const currentPage = Number(queryPage && queryPage[1] ? queryPage[1] : 1);
   const [page, setPage] = useState(currentPage);
 
+  const [customerDatas, setCustomerDatas] = useState([]);
+
   const pageChange = (newPage) => {
     currentPage !== newPage &&
       history.push(`/datatable/customers?page=${newPage}`);
@@ -42,6 +45,13 @@ const Customers = () => {
   useEffect(() => {
     currentPage !== page && setPage(currentPage);
   }, [currentPage, page]);
+
+  useEffect(() => {
+    axios.get('http://localhost:5000/rooms')
+      .then(function (res) {
+        setCustomerDatas(res.data);
+      })
+  }, []);
 
   return (
     <CRow>

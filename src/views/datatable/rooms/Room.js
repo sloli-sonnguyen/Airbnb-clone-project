@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { CCard, CCardBody, CCardHeader, CCol, CRow } from '@coreui/react';
+import './style.css';
 import CIcon from '@coreui/icons-react';
+import axios from 'axios';
 
-import roomDatas from './roomDatas';
 
 const Room = ({ match }) => {
-  const room = roomDatas.find((room) => room.id.toString() === match.params.id);
+  const id = match.params.id;
+  const [room, setRoom] = useState({});
   const roomDetails = room
     ? Object.entries(room)
     : [
@@ -16,7 +18,14 @@ const Room = ({ match }) => {
           </span>,
       ],
     ];
-  console.log(roomDetails);
+
+  useEffect(() => {
+    axios.get(`http://localhost:5000/rooms/${id}`)
+      .then(function (res) {
+        const roomData = res.data[0];
+        setRoom(roomData);
+      })
+  }, [])
 
   return (
     <CRow>
@@ -31,7 +40,9 @@ const Room = ({ match }) => {
                     <tr key={index.toString()}>
                       <td>{`${key}:`}</td>
                       <td>
-                        <strong>{value}</strong>
+                        {key === 'state' ? <strong>{value === 1 ? 'Đã được thuê' : 'Còn trống'}</strong>
+                          : <strong>{value}</strong>
+                        }
                       </td>
                     </tr>
                   );
