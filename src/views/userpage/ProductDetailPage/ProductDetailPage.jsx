@@ -3,8 +3,23 @@ import Navbar from '../common/navbar/navbar';
 import Footer from '../common/footer/index';
 import axios from 'axios'
 import './style.css';
+import ImageGalerry from './ImageGalerry';
 
-function ProductDetailPage(props) {
+
+
+
+function ProductDetailPage({ match }) {
+    const id = match.params.id;
+    const [product, setProduct] = useState({});
+    const [hostInfo, setHostInfo] = useState({});
+
+    useEffect(() => {
+        axios.get(`http://localhost:5000/rooms/${id}`).then(res => {
+            console.log(res.data[0])
+            setProduct(res.data[0]);
+        })
+    }, [id]);
+
     return (
         <div className="product-detail">
             <header className="header">
@@ -15,50 +30,19 @@ function ProductDetailPage(props) {
             <main className="product-detail__main">
                 <div className="container">
                     <div className="intro">
-                        <h2>DANNY’s STYLIST FREE GYM POOL APT in CBD, Bui Vien</h2>
-                        <p>Quận 4, Thành phố Hồ Chí Minh, Việt Nam</p>
+                        <h2>{product.name}</h2>
+                        <p>{product.city}</p>
                     </div>
-                    <div className="album">
-                        <div className="item1 item">
-                            <img
-                                src="https://a0.muscache.com/im/pictures/e2fe7e30-da09-45cc-a76e-0dcc331d85b4.jpg?im_w=1200"
-                                alt=""
-                            />
-                        </div>
-                        <div className="item2 item">
-                            <img
-                                src="https://a0.muscache.com/im/pictures/cdc3ad53-ff83-40e2-aa26-e58f3501b1df.jpg?im_w=1440"
-                                alt=""
-                            />
-                        </div>
-                        <div className="item3 item">
-                            <img
-                                src="https://a0.muscache.com/im/pictures/cb426536-7119-4b44-a6c9-927e4f136b19.jpg?im_w=1440"
-                                alt=""
-                            />
-                        </div>
-                        <div className="item4 item">
-                            <img
-                                src="https://a0.muscache.com/im/pictures/38df7410-e23e-4169-8ca4-392daebfbabb.jpg?im_w=1440"
-                                alt=""
-                            />
-                        </div>
-                        <div className="item5 item">
-                            <img
-                                src="https://a0.muscache.com/im/pictures/52f5a3f6-aaaf-44a7-b15a-873ad93980da.jpg?im_w=1440"
-                                alt=""
-                            />
-                        </div>
-                    </div>
+                    <ImageGalerry id={id} />
                     <div className="container-body">
                         <div className="order">
-                            <h2>27$ /đêm</h2>
+                            <h2>{product.price}</h2>
                             <button>Đặt phòng</button>
                         </div>
                         <div className="info">
                             <div className="info__room">
                                 <h2>Toàn bộ căn hộ. Chủ nhà Trung Danny Home</h2>
-                                <p>2 khách · Phòng studio · 1 giường · 1 phòng tắm</p>
+                                <p>{product.total_bedrooms} phòng ngủ · {product.total_bathrooms} phòng tắm</p>
                             </div>
                             <div className="info__avatar-host avatar">
                                 <img
@@ -132,15 +116,15 @@ function ProductDetailPage(props) {
 
                         <div className="convenient">
                             <div className="convenient__item">
-                                <p>1</p>
+                                <p>{product.total_bedrooms}</p>
                                 <div className="convenient-item__icon">
                                     <i className="fas fa-bed"></i>
                                 </div>
-                                <p>Giường ngủ</p>
+                                <p>Phòng ngủ</p>
                             </div>
 
                             <div className="convenient__item">
-                                <p>1</p>
+                                <p>{product.total_bathrooms}</p>
                                 <div className="convenient-item__icon">
                                     <i className="fas fa-bath"></i>
                                 </div>
@@ -148,7 +132,7 @@ function ProductDetailPage(props) {
                             </div>
 
                             <div className="convenient__item">
-                                <p>1</p>
+                                <p>{product.has_tv}</p>
                                 <div className="convenient-item__icon">
                                     <i class="fas fa-tv"></i>
                                 </div>
@@ -156,7 +140,7 @@ function ProductDetailPage(props) {
                             </div>
 
                             <div className="convenient__item">
-                                <p>1</p>
+                                <p>{product.has_air_con}</p>
                                 <div className="convenient-item__icon">
                                     <i className="fas fa-wind"></i>
                                 </div>
@@ -164,7 +148,7 @@ function ProductDetailPage(props) {
                             </div>
 
                             <div className="convenient__item">
-                                <p>1</p>
+                                <p>{product.has_heating}</p>
                                 <div className="convenient-item__icon">
                                     <i className="fas fa-fire"></i>
                                 </div>
@@ -172,7 +156,7 @@ function ProductDetailPage(props) {
                             </div>
 
                             <div className="convenient__item">
-                                <p>1</p>
+                                <p>{product.has_internet}</p>
                                 <div className="convenient-item__icon">
                                     <i className="fas fa-wifi"></i>
                                 </div>
@@ -185,7 +169,7 @@ function ProductDetailPage(props) {
                             <div className="rating-item__user-info">
                                 <div className="user-info__avatar avatar">
                                     <img
-                                        src="https://a0.muscache.com/im/pictures/user/7e89480f-c823-4923-a9ba-0a1c0f625f15.jpg?im_w=240"
+                                        src="https://cdn.dribbble.com/users/135467/screenshots/14766210/media/3a15772d1c21cb0a61a3c6755e711884.jpg?compress=1&resize=1000x750"
                                         alt=""
                                     />
                                 </div>
@@ -208,12 +192,55 @@ function ProductDetailPage(props) {
                             <div className="rating-item__user-info">
                                 <div className="user-info__avatar avatar">
                                     <img
-                                        src="https://a0.muscache.com/im/pictures/user/2c129b57-6b64-4e74-908e-64aba6c7748c.jpg?im_w=240"
+                                        src="https://cdn.dribbble.com/users/1231052/screenshots/7910419/image.png"
                                         alt=""
                                     />
                                 </div>
                                 <div className="user-info__name">
                                     <h3>Pham Huy Ky Anh</h3>
+                                    <h3>4.0 ⭐</h3>
+                                </div>
+                            </div>
+                            <div className="rating-item__comment">
+                                <p>
+                                    Cute, cozy studio. Beyond my expectations. So clean and Trung
+                                    Danny was great with communication and accommodated so much. Will
+                                    definitely stay again.
+            </p>
+                            </div>
+                        </div>
+
+                        <div className="rating__item">
+                            <div className="rating-item__user-info">
+                                <div className="user-info__avatar avatar">
+                                    <img
+                                        src="https://cdn.dribbble.com/users/3586023/screenshots/9470740/media/930123b1b8421c883326b5c5109ddc66.gif"
+                                        alt=""
+                                    />
+                                </div>
+                                <div className="user-info__name">
+                                    <h3>Do Duy Anh</h3>
+                                    <h3>3.0 ⭐</h3>
+                                </div>
+                            </div>
+                            <div className="rating-item__comment">
+                                <p>
+                                    Cute, cozy studio. Beyond my expectations. So clean and Trung
+                                    Danny was great with communication and accommodated so much. Will
+                                    definitely stay again.
+            </p>
+                            </div>
+                        </div>
+                        <div className="rating__item">
+                            <div className="rating-item__user-info">
+                                <div className="user-info__avatar avatar">
+                                    <img
+                                        src="https://cdn.dribbble.com/users/1189769/screenshots/9866852/image.png?compress=1&resize=800x600"
+                                        alt=""
+                                    />
+                                </div>
+                                <div className="user-info__name">
+                                    <h3>Vu Minh Cong</h3>
                                     <h3>4.0 ⭐</h3>
                                 </div>
                             </div>

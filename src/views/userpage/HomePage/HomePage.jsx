@@ -1,6 +1,7 @@
 import React from 'react';
 import Navbar from '../common/navbar/navbar';
 import Footer from '../common/footer/index';
+import { Link } from 'react-router-dom';
 import './homepage.css';
 
 
@@ -67,7 +68,7 @@ function HomePage(props) {
                 {/* 3 small box */}
                 <div class="three-small-box">
                     <div class="three-small-box-container">
-                        <div class="three-small-box__box">
+                        <Link to="/s/products" class="three-small-box__box">
                             <div class="image__box">
                                 <img src="https://a0.muscache.com/im/pictures/2a16f833-464c-446c-8d74-33eb8c643975.jpg?im_w=480" alt="c" />
                             </div>
@@ -75,7 +76,7 @@ function HomePage(props) {
                                 <h3 class="title__box">Chỗ ở độc đáo</h3>
                                 <p class="para__box">Những không gian mà không chỉ là nơi để ngủ.</p>
                             </div>
-                        </div>
+                        </Link>
                         <div class="three-small-box__box">
                             <div class="image__box">
                                 <img src="https://a0.muscache.com/im/pictures/426a8116-0b94-4407-ae87-924126c81d78.jpg?im_w=480" alt="a" />
