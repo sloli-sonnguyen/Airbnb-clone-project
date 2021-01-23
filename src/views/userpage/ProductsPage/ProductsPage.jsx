@@ -15,8 +15,6 @@ function ProductsPage(props) {
   let history = useHistory();
   let {search} = location;
 
-  
-
 
   useEffect(() => {
     axios.get("http://localhost:5000/rooms" + search).then((res) => {
@@ -53,10 +51,20 @@ function ProductsPage(props) {
 
   function onChangeSelectPrice(e){
     const value = e.target.value;
+    var updateProducts =  updateProducts = [...products];
+    if(value === '0'){
+      updateProducts.sort(function(a, b){
+          return a.price - b.price;
+      })
+    }
 
     if(value === '1'){
-
+      updateProducts.sort(function(a, b){
+          return b.price - a.price;
+      })
     }
+    setProducts(updateProducts);
+    
   }
 
 //   function onSearchSubmit(){
@@ -80,13 +88,14 @@ function ProductsPage(props) {
           <div className="filter">
             <div className="filter__list-btn">
               <select onChange={handleOnchangeInput} name="hometype" className="hometype-select">
-                <option >Loại nơi ở</option>
+                <option value="">Loại nơi ở</option>
                 <option value="villa">Villa</option>
                 <option value="house">House</option>
                 <option value="apartment">Apartment</option>
                 <option value="chalet">Chalet</option>
+              
               </select>
-              <select name="price" className="hometype-select">
+              <select onChange={onChangeSelectPrice} name="price" className="hometype-select">
                 <option >Giá</option>
                 <option value="0">Thấp đến cao</option>
                 <option value="1">Cao đến thâp</option>
