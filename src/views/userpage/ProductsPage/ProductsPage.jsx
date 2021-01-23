@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import {useLocation, useHistory} from "react-router-dom";
 import axios from "axios";
 import Navbar from "../common/navbar/navbar";
 import Footer from "../common/footer/index";
@@ -7,13 +8,22 @@ import { Link } from "react-router-dom";
 
 function ProductsPage(props) {
   const [products, setProducts] = useState([]);
+  const [searchInput, setSearchInput] = useState({
+    home_type: ''
+});
+  let location = useLocation();
+  let history = useHistory();
+  let {search} = location;
+
+  
+
 
   useEffect(() => {
-    axios.get("http://localhost:5000/rooms").then((res) => {
+    axios.get("http://localhost:5000/rooms" + search).then((res) => {
       const { data } = res;
       setProducts(data);
     });
-  }, []);
+  }, [search]);
   const listItems = products.map((item, index) => {
     return (
       <Link to={`/s/products/${item.id}`} key={index} className="grid-item">
@@ -30,6 +40,30 @@ function ProductsPage(props) {
       </Link>
     );
   });
+
+
+  function handleOnchangeInput(e) {
+    const value = e.target.value;
+    setSearchInput({
+      ...searchInput,
+      [e.target.name]: value
+    });
+    history.push(`/s/products?home_type=${value}`);
+  }
+
+  function onChangeSelectPrice(e){
+    const value = e.target.value;
+
+    if(value === '1'){
+
+    }
+  }
+
+//   function onSearchSubmit(){
+//     console.log(searchInput);
+//     history.push(`/s/products?city=${searchInput.city}`);
+// }
+
   return (
     <div className="products-page">
       <header className="header">
@@ -41,15 +75,22 @@ function ProductsPage(props) {
         <div className="container">
           <div className="intro">
             <p>Hơn 300 chỗ ở</p>
-            <h2>Chỗ ở tại Hà Nội</h2>
+            <h2>Chỗ ở </h2>
           </div>
           <div className="filter">
             <div className="filter__list-btn">
-              <button>Tùy chọn hủy linh hoạt</button>
-              <button>Loại nơi ở</button>
-              <button>Giá</button>
-              <button>Đặt ngay</button>
-              <button>Bộ lọc khác</button>
+              <select onChange={handleOnchangeInput} name="hometype" className="hometype-select">
+                <option >Loại nơi ở</option>
+                <option value="villa">Villa</option>
+                <option value="house">House</option>
+                <option value="apartment">Apartment</option>
+                <option value="chalet">Chalet</option>
+              </select>
+              <select name="price" className="hometype-select">
+                <option >Giá</option>
+                <option value="0">Thấp đến cao</option>
+                <option value="1">Cao đến thâp</option>
+              </select>
             </div>
             <div className="filter__map">
               <button>

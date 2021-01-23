@@ -68,7 +68,7 @@ function HomePage(props) {
                 {/* 3 small box */}
                 <div class="three-small-box">
                     <div class="three-small-box-container">
-                        <Link to="/s/products" class="three-small-box__box">
+                        <Link className="special-link" to="/s/products" class="three-small-box__box">
                             <div class="image__box">
                                 <img src="https://a0.muscache.com/im/pictures/2a16f833-464c-446c-8d74-33eb8c643975.jpg?im_w=480" alt="c" />
                             </div>

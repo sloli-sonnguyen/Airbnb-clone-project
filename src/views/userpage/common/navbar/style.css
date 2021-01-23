@@ -16,6 +16,13 @@
     font-weight: bold;
 }
 
+.navbar__logo{
+    text-decoration: none !important;
+}
+.navbar__logo:hover{
+    text-decoration: none !important;
+}
+
 .search-active-icon {
     border-radius: 20px !important;
 }

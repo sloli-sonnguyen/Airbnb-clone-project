@@ -22,6 +22,10 @@
   background-color: white;
 }
 
+.products-page__main{
+  margin-top: 50px;
+}
+
 /*  */
 .products-page__main {
   background-color: white;
@@ -121,4 +125,16 @@ button {
 
 .record__container-img img {
   width: 100%;
+}
+
+
+
+.hometype-select{
+  padding: 12px 20px;
+  margin-right: 5px;
+
+  border-radius: 20px;
+  border: 1px solid silver;
+  outline: none;
+  cursor: pointer;
 }

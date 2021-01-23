@@ -205,3 +205,15 @@ p {
     margin: 0;
     margin-bottom: 20px;
 }
+
+
+.three-small-box__box{
+
+    color: black !important;
+    text-decoration: none !important;
+}
+
+.sthree-small-box__box{
+    color: black !important;
+    text-decoration: none !important;
+}

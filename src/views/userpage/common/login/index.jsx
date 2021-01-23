@@ -27,8 +27,10 @@ function LoginPopup(props) {
     axios.post('http://localhost:5000/login-user', loginInput)
       .then(function (response) {
         if (response.data.message === 'success') {
-          localStorage.setItem('adminLogin', true);
-          history.push('/s');
+          localStorage.setItem('customerLogin', true);
+          localStorage.setItem('customerId', response.data.id);
+          alert('Thành công');
+          window.location.reload();
         } else {
           alert("Bạn nhập sai tài khoản. Vui lòng nhập lại !");
         }

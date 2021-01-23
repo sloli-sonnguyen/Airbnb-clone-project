@@ -1,12 +1,17 @@
 import React, { useState, useEffect } from "react";
 import "./style.css";
+import { useHistory,Link } from "react-router-dom";
+
+
 
 // date picker
 import { Datepicker, START_DATE } from "@datepicker-react/styled";
 import { ThemeProvider } from "styled-components";
 import LoginPopup from '../login/index';
 import SignupPopup from '../signup/index';
+import { func } from "prop-types";
 function Navbar(props) {
+    let history = useHistory();
     const [state, setState] = useState({
         startDate: null,
         endDate: null,
@@ -17,7 +22,12 @@ function Navbar(props) {
     const [activeDatePicker, setActiveDatePicker] = useState(false);
     const [activeMenu, setActiveMenu] = useState(false);
     const [activePopupLogin, setActivePopupLogin] = useState(false);
-    const [activePopupSignup, setActivePopupSignup] = useState(false);
+    const [activePopupSignup, setActivePopupSignup] = useState(false)
+    const [searchInput, setSearchInput] = useState({
+        city: ''
+    });
+
+    const customerLogin = JSON.parse(localStorage.getItem('customerLogin')) || false;
 
     useEffect(() => {
         window.addEventListener("scroll", (event) => {
@@ -50,11 +60,35 @@ function Navbar(props) {
     function onHandleSignupButtonClick() {
         setActivePopupSignup(!activePopupSignup);
     }
+
+    function onSearchSubmit(){
+        console.log(searchInput);
+        history.push(`/s/products?city=${searchInput.city}`);
+    }
+
+    function handleOnchangeInput(e) {
+        const value = e.target.value;
+        setSearchInput({
+          ...searchInput,
+          [e.target.name]: value
+        });
+      }
+
+    function onLogout(){
+        localStorage.removeItem('customerLogin');
+        localStorage.removeItem('customerId');
+        window.location.reload();
+    }
+
+    function onLogoClick(){
+        window.location.reload();
+    }
+
     return (
         <div className="navbar-version-1 container">
-            <div className="navbar__logo">
+            <Link to="/s" className="navbar__logo">
                 <h2 className="navbar-logo__text">Mochi</h2>
-            </div>
+            </Link>
             {activeSearchBox || (
                 <div
                     className="navbar__search search-none-active"
@@ -70,7 +104,7 @@ function Navbar(props) {
                 <div className="navbar__search">
                     <div className="search__item search__location">
                         <p className="search__text-mb">Địa điểm</p>
-                        <input type="text" placeholder="Bạn sắp đi đâu?" />
+                        <input name="city" value={searchInput.city} onChange={handleOnchangeInput} type="text" placeholder="Bạn sắp đi đâu?" />
                     </div>
                     <div
                         className="search__item search-date search-date__start"
@@ -91,7 +125,7 @@ function Navbar(props) {
                             <p className="search__text-mb">Khách</p>
                             <p>Thêm khách</p>
                         </div>
-                        <span className="navbar-search__icon">
+                        <span onClick={onSearchSubmit} className="navbar-search__icon">
                             <i className="fas fa-search search-active-icon">
                                 <span>Tìm kiếm</span>
                             </i>
@@ -150,11 +184,13 @@ function Navbar(props) {
                     {
                         activeMenu && <div className="menu-show-box__menu2">
                             <ul className="menu-show-box__menu2-list">
-                                <li className="menu-show__item menu-show__title" onClick={onHandleSignupButtonClick}>Đăng ký</li>
-                                <li className="menu-show__item" onClick={onHandleLoginButtonClick}>Đăng nhập</li>
-                                <li className="menu-show__item">Cho thuê nhà</li>
-                                <li className="menu-show__item">Tổ chức</li>
-                                <li className="menu-show__item">Trải nghiệm</li>
+                               
+                                {customerLogin &&  <li className="menu-show__item" onClick={onLogout}>Đăng xuất</li>}
+                                {customerLogin ||  <li className="menu-show__item" onClick={onHandleLoginButtonClick}>Đăng nhập</li>}
+                                {customerLogin ||  <li className="menu-show__item" onClick={onHandleLoginButtonClick}>Đăng ký</li>}
+                                <li className="menu-show__item" onClick={onHandleLoginButtonClick}>Trải nghiệm</li>
+                                <li className="menu-show__item" onClick={onHandleLoginButtonClick}>Thông tin</li>
+                                <li className="menu-show__item" onClick={onHandleLoginButtonClick}>Tổ chức</li>
                             </ul>
                         </div>
                     }
