@@ -50,8 +50,10 @@ const CreateRoom = () => {
         axios.post('http://localhost:5000/rooms', newRoom)
             .then(function (response) {
                 console.log('oke con de');
+                alert("Tạo thành công !");
             })
             .catch(function (error) {
+                alert("Thất bại");
                 console.log(error);
             });
     }

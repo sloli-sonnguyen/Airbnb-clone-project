@@ -9,6 +9,11 @@ import {
 import CIcon from '@coreui/icons-react'
 
 const TheHeaderDropdown = () => {
+
+  function onLogout(){
+    localStorage.removeItem('adminLogin');
+    window.location.reload();
+  }
   return (
     <CDropdown
       inNav
@@ -36,7 +41,7 @@ const TheHeaderDropdown = () => {
         <CDropdownItem>
           <CIcon name="cil-user" className="mfe-2" />Profile
         </CDropdownItem>
-        <CDropdownItem>
+        <CDropdownItem onClick={onLogout}>
           <CIcon name="cil-chevron-left" className="mfe-2" />
           Log out
         </CDropdownItem>
